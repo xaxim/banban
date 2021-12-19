@@ -37,6 +37,11 @@ bot.on("ready", async () => {
   console.log(startSessionLog);
 });
 
+bot.on("guildCreate", guild => {
+  console.log(`Joined guild ${guild.name}`);
+  bot.createMessage("921995856088027146", `Joined guild ${guild.name}`);
+});
+
 bot.on("error", console.error);
 
 bot.connect();
