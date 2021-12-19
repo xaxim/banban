@@ -1,0 +1,30 @@
+{
+  "name": "banban",
+  "version": "1.0.0",
+  "description": "Discord bot to mass ban and to export a server ban list",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start ecosystem.config.js --env production",
+    "dev": "pm2-runtime start dev.ecosystem.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xaxim/banban.git"
+  },
+  "keywords": [
+    "node",
+    "eris",
+    "epic rpg"
+  ],
+  "author": "xaxim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xaxim/banban/issues"
+  },
+  "homepage": "https://github.com/xaxim/banban#readme",
+  "dependencies": {
+    "eris": "^0.16.1",
+    "pm2": "^5.1.2"
+  }
+}
