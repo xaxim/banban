@@ -2,14 +2,20 @@
 const label = "invite";
 
 const generator = (msg, args) => {
-  return "https://discord.com/oauth2/authorize?client_id=921855309629247498&permissions=388164&scope=bot";
+
+  return {
+    embed: {
+      description: "Invite link: https://discord.com/oauth2/authorize?client_id=921855309629247498&permissions=388164&scope=bot\n"
+        + "Source code: https://github.com/xaxim/banban",
+    }
+  };
 }
 
 const options = {
-  description: "displays invite link",
-  fullDescription: "displays invite link",
+  description: "displays invite and source code links",
+  fullDescription: "displays invite and source code links",
   caseInsensitive: true,
-  aliases: ["inv"],
+  aliases: ["inv", "info"],
   hidden: false
 }
 

@@ -1,6 +1,8 @@
 const Eris = require("eris");
 const commands = require("./commands");
 
+const EMOJI_SERVER_LOG_CHANNEL = "921995856088027146";
+
 const bot = new Eris.CommandClient(
   process.env.BOT_TOKEN,
   {
@@ -38,8 +40,13 @@ bot.on("ready", async () => {
 });
 
 bot.on("guildCreate", guild => {
-  console.log(`Joined guild ${guild.name}`);
-  bot.createMessage("921995856088027146", `Joined guild ${guild.name}`);
+  console.log(`Joined guild ${guild.name}`);  
+  bot.createMessage(EMOJI_SERVER_LOG_CHANNEL, `Joined server ${guild.name}`);
+});
+
+bot.on("guildDelete", guild => {
+  console.log(`Left guild ${guild.name}`);
+  bot.createMessage(EMOJI_SERVER_LOG_CHANNEL, `Left server ${guild.name}`);
 });
 
 bot.on("error", console.error);
