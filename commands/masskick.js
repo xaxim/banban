@@ -20,7 +20,7 @@ const generator = (msg, args) => {
   bot.createMessage(msg.channel.id, `mass kicking ${args.length} users, please wait...`)
     .then(message => {
       args.forEach(arg => {
-        bot.kickGuildMember(msg.channel.guild.id, arg, 0, `masskicked by ${msg.author.username}#${msg.author.discriminator} (${msg.author.id})`)
+        bot.kickGuildMember(msg.channel.guild.id, arg, `masskicked by ${msg.author.username}#${msg.author.discriminator} (${msg.author.id})`)
           .then(() => {
             kickCount++;
             message.edit(`${message.content} Progress: ${kickCount + failCount}/${args.length}`);
