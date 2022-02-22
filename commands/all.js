@@ -20,7 +20,7 @@ const generator = (msg, args) => {
   bot.createMessage(msg.channel.id, `mass banning ${args.length} users, please wait...`)
     .then(message => {
       args.forEach(arg => {
-        bot.banGuildMember(msg.channel.guild.id, arg, 0, `massbanned by ${msg.author.username}#${msg.author.discriminator} (${msg.author.id})`)
+        bot.banGuildMember(msg.channel.guild.id, arg, 0, `massbanned by ${msg.author.username}#${msg.author.discriminator} (${msg.author.id}) at ${new Date()}`)
           .then(() => {
             banCount++;
             message.edit(`${message.content} Progress: ${banCount + failCount}/${args.length}`);
