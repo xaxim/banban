@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/xaxim/banban#readme",
   "dependencies": {
-    "eris": "^0.16.1",
-    "pm2": "^5.2.0"
+    "eris": "^0.17.1",
+    "pm2": "^5.2.2"
   }
 }
