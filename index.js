@@ -49,6 +49,11 @@ bot.on("guildDelete", guild => {
   bot.createMessage(EMOJI_SERVER_LOG_CHANNEL, `Left server ${guild.name}`);
 });
 
-bot.on("error", console.error);
+bot.on("error", (err, id) => {
+  if (err.message !== "Connection reset by peer") {
+    console.log("Error Event catched: " + err.message);
+    console.error(err);
+  }
+});
 
 bot.connect();
