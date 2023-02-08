@@ -51,7 +51,7 @@ bot.on("guildDelete", guild => {
 
 bot.on("error", (err, id) => {
   if (err.message !== "Connection reset by peer") {
-    console.log("Error Event catched: " + err.message);
+    console.log(`[${bot.user.username}#${bot.user.discriminator}] Error Event on shard ${id}: ${err.message}`);
     console.error(err);
   }
 });
