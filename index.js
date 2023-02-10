@@ -31,7 +31,7 @@ commands.forEach(cmd => {
 let sessions = 0;
 bot.on("ready", () => {
   sessions++;
-  const startSessionLog = `Session ${sessions.length} of ${bot.user.username}#${bot.user.discriminator} started at ${new Date()} ` +
+  const startSessionLog = `Session ${sessions} of ${bot.user.username}#${bot.user.discriminator} started at ${new Date()} ` +
     `in ${process.env.NODE_ENV} environment ` +
     `in ${bot.guilds.size} guilds:`;
   const serverList = Array.from(bot.guilds.values())
