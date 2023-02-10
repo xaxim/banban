@@ -1,6 +1,6 @@
 {
   "name": "banban",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Discord bot to mass ban and to export a server ban list",
   "main": "index.js",
   "scripts": {
