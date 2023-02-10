@@ -28,25 +28,30 @@ commands.forEach(cmd => {
   }
 });
 
-let sessionCount = 0;
-bot.on("ready", async () => {
-  const startSessionLog = `Session ${sessionCount++} of ${bot.user.username}#${bot.user.discriminator} started at ${new Date()} ` +
+let sessions = 0;
+bot.on("ready", () => {
+  sessions++;
+  const startSessionLog = `Session ${sessions.length} of ${bot.user.username}#${bot.user.discriminator} started at ${new Date()} ` +
     `in ${process.env.NODE_ENV} environment ` +
-    `in ${bot.guilds.size} guilds: \n` +
-    Array.from(bot.guilds.values())
-      .map(guild => guild.name)
-      .join("\n");
+    `in ${bot.guilds.size} guilds:`;
+  const serverList = Array.from(bot.guilds.values())
+    .sort((a, b) => b.memberCount - a.memberCount)
+    .map((guild, index) => `${new Intl.NumberFormat('pt-BR', { minimumIntegerDigits: 3 }).format(index + 1)} • Owner: ${guild.ownerID} • [${new Intl.NumberFormat('pt-BR').format(guild.memberCount)}] ${guild.name}`)
+    .join("\n");
   console.log(startSessionLog);
+  if (sessions === 1) {
+    console.log(serverList);
+  }
 });
 
 bot.on("guildCreate", guild => {
   console.log(`Joined guild ${guild.name}`);  
-  bot.createMessage(EMOJI_SERVER_LOG_CHANNEL, `Joined server ${guild.name}`);
+  bot.createMessage(EMOJI_SERVER_LOG_CHANNEL, `[${bot.user.username}#${bot.user.discriminator}] Joined server owned by ${guild.ownerID} • ${guild.name} [${new Intl.NumberFormat('pt-BR').format(guild.memberCount)}]`);
 });
 
 bot.on("guildDelete", guild => {
   console.log(`Left guild ${guild.name}`);
-  bot.createMessage(EMOJI_SERVER_LOG_CHANNEL, `Left server ${guild.name}`);
+  bot.createMessage(EMOJI_SERVER_LOG_CHANNEL, `[${bot.user.username}#${bot.user.discriminator}] Left server owned by ${guild.ownerID} • ${guild.name} [${new Intl.NumberFormat('pt-BR').format(guild.memberCount)}]`);
 });
 
 bot.on("error", (err, id) => {
